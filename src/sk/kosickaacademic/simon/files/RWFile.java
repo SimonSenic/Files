@@ -35,7 +35,7 @@ public class RWFile {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HHmmss");
         String timeX = time.format(timeFormat);
 
-        return name=name+timeX;
+        return name+=timeX;
     }
 
     public String checkChar(String txt){
