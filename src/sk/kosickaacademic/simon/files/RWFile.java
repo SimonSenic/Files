@@ -3,6 +3,7 @@ package sk.kosickaacademic.simon.files;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class RWFile {
     public void copyFile(String fileName){
@@ -14,7 +15,8 @@ public class RWFile {
             writer = new BufferedWriter(new FileWriter(file));
             String line = reader.readLine();
             while(line!=null){
-                line=checkChar(line);
+                //line=checkChar(line);
+                line=encryptChar(line);
                 writer.write(line +'\n');
                 line=reader.readLine();
             }
@@ -36,13 +38,37 @@ public class RWFile {
         return name=name+timeX;
     }
 
-    public String checkChar(String a){
+    public String checkChar(String txt){
         String result="";
-        for(int i=0; i<a.length(); i++){
-            if(a.charAt(i)=='i' || a.charAt(i)=='y' || a.charAt(i)=='I' || a.charAt(i)=='Y')
+        for(int i=0; i<txt.length(); i++){
+            if(txt.charAt(i)=='i' || txt.charAt(i)=='y' || txt.charAt(i)=='I' || txt.charAt(i)=='Y')
                 result+='_';
             else
-                result+=a.charAt(i);
+                result+=txt.charAt(i);
+        }
+        return result;
+    }
+
+    public String encryptChar(String txt){
+        String result="";
+        System.out.println("Enter crypt addend: ");
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        for(int i=0; i<txt.length(); i++){
+            char a=txt.charAt(i);
+            if(a>='A' && a<='Z') {
+                a=(char)(a+n);
+                if(a>'Z') a=(char)(a-26);
+            }
+            else if(a>='a' && a<='z') {
+                a=(char)(a+n);
+                if(a>'z') a=(char)(a-26);
+            }
+            else if(a>='0' && a<='9') {
+                a=(char)(a+n);
+                if(a>'9') a=(char)(a-8);
+            }
+            result+=a;
         }
         return result;
     }
