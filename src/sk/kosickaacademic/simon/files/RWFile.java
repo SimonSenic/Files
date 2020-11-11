@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class RWFile {
-    public void copyFileWithCapital(String fileName){
+    public void copyFile(String fileName){
         BufferedReader reader;
         BufferedWriter writer;
         try{
