@@ -11,9 +11,8 @@ public class Student {
     private int age;
     private double height;
     private int weight;
-    private Contact contact;
 
-    public Student(String firstName, String lastName, String id, double height, int weight) {
+    public Student(String firstName, String lastName, String id, double height, int weight){
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
